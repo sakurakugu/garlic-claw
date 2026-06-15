@@ -1,7 +1,7 @@
 import { Body, Controller, Delete, Get, Param, Post, Put, Query, Res, UploadedFile, UseGuards, UseInterceptors } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import type { Response } from 'express';
-import { CurrentUser, JwtAuthGuard } from '../auth/http-auth';
+import { CurrentUser, JwtAuthGuard, Public } from '../auth/http-auth';
 import { PersonaService } from './persona.service';
 import { ActivateConversationPersonaDto } from './dto/activate-conversation-persona.dto';
 import { CreatePersonaDto } from './dto/create-persona.dto';
@@ -59,6 +59,7 @@ export class PersonaController {
   }
 
   @Get(':personaId/avatar')
+  @Public()
   async getPersonaAvatar(@Param('personaId') personaId: string, @Res() response: Response) {
     try {
       const avatarPath = this.personaService.readPersonaAvatarPath(personaId);

@@ -77,8 +77,10 @@ async function newChat() {
 <style scoped>
 .chat-console-view {
   display: flex;
-  min-height: 100%;
   height: 100%;
+  max-height: 100%;
+  min-height: 0;
+  overflow: hidden;
 }
 
 .chat-rail {
@@ -165,14 +167,16 @@ async function newChat() {
 }
 
 .chat-content {
+  display: flex;
+  flex-direction: column;
   flex: 1;
   min-width: 0;
-  min-height: 100%;
+  min-height: 0;
   background: var(--gc-surface-elevated);
   backdrop-filter: blur(var(--gc-blur));
   -webkit-backdrop-filter: blur(var(--gc-blur));
   border-left: 1px solid var(--gc-border);
-  overflow: visible;
+  overflow: hidden;
 }
 
 @media (max-width: 900px) {
