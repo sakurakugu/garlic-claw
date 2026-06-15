@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import { bootstrapHttpApp } from './bootstrap/bootstrap-http-app';
+import { bootstrapHttpApp } from './core/bootstrap/bootstrap-http-app';
 import { createServerLogger } from './core/logging/server-logger';
 
 const logger = createServerLogger('Bootstrap');
