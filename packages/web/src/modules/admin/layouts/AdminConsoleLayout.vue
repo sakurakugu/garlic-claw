@@ -787,7 +787,8 @@ watch(preferredExpandedSiderWidth, (width) => {
 .admin-body {
   display: flex;
   flex: 1;
-  overflow: visible;
+  min-height: 0;
+  overflow: hidden;
   background: var(--gc-surface-base);
 }
 
@@ -972,8 +973,9 @@ watch(preferredExpandedSiderWidth, (width) => {
 .admin-content {
   flex: 1;
   height: 100%;
-  overflow: auto;
+  min-height: 0;
   min-width: 0;
+  overflow: hidden;
 }
 
 .admin-sider-resize-handle {

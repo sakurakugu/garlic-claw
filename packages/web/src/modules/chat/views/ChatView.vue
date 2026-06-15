@@ -321,12 +321,15 @@ function readTodoPriorityLabel(priority: "high" | "medium" | "low") {
 
 <style scoped>
 .chat-view {
+  flex: 1;
   height: 100%;
+  min-height: 0;
   display: flex;
   flex-direction: column;
   gap: 8px;
   padding: 0;
   background: transparent;
+  overflow: hidden;
 }
 
 .chat-stage {
@@ -335,13 +338,14 @@ function readTodoPriorityLabel(priority: "high" | "medium" | "low") {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  padding: 12px 16px 16px;
+  padding: 12px 16px calc(28px + env(safe-area-inset-bottom, 0px));
   background: var(--gc-surface-elevated);
   backdrop-filter: blur(var(--gc-blur));
   -webkit-backdrop-filter: blur(var(--gc-blur));
   border-radius: var(--gc-radius) var(--gc-radius) 0 0;
   border: 1px solid var(--gc-border);
   border-bottom: none;
+  overflow: hidden;
 }
 
 .chat-tabs {

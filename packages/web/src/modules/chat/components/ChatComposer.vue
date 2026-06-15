@@ -265,6 +265,7 @@ function selectCommandSuggestion(trigger: string) {
 
 <style scoped>
 .input-area {
+  flex-shrink: 0;
   padding: 0;
   background: transparent;
 }

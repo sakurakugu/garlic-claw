@@ -1,6 +1,7 @@
 import * as path from 'node:path';
 import { PersonaController } from '../../src/modules/persona/persona.controller';
 import { GUARDS_METADATA } from '@nestjs/common/constants';
+import { IS_PUBLIC_ROUTE_KEY } from '../../src/modules/auth/http-auth';
 
 describe('PersonaController', () => {
   const personaService = {
@@ -26,6 +27,10 @@ describe('PersonaController', () => {
     const putGuards = Reflect.getMetadata(GUARDS_METADATA, PersonaController.prototype.activateCurrentPersona) as Array<{ name?: string }> | undefined;
     expect(getGuards?.map((guard) => guard?.name)).toContain('JwtAuthGuard');
     expect(putGuards?.map((guard) => guard?.name)).toContain('JwtAuthGuard');
+  });
+
+  it('marks avatar reads as public so image tags can load them', () => {
+    expect(Reflect.getMetadata(IS_PUBLIC_ROUTE_KEY, PersonaController.prototype.getPersonaAvatar)).toBe(true);
   });
 
   it('lists personas and reads the current persona from request user context', async () => {
