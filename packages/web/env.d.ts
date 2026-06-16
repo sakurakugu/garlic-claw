@@ -1,7 +1,6 @@
 /// <reference types="vite/client" />
 
 interface ImportMetaEnv {
-  readonly VITE_DEV_LOGIN_SECRET?: string
 }
 
 interface ImportMeta {
@@ -13,6 +12,8 @@ declare module '*.vue' {
   const component: DefineComponent<{}, {}, any>
   export default component
 }
+
+declare const __GARLIC_CLAW_DEV_LOGIN_SECRET__: string
 
 declare module 'markdown-it-footnote' {
   import type { PluginSimple } from 'markdown-it'

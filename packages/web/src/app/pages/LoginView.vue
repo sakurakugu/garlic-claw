@@ -45,9 +45,10 @@ const secret = ref('')
 const error = ref('')
 const submitting = ref(false)
 
-const isDev = import.meta.env.DEV && !!import.meta.env.VITE_DEV_LOGIN_SECRET
-
-const devSecret = import.meta.env.VITE_DEV_LOGIN_SECRET as string | undefined
+const devSecret = import.meta.env.DEV
+  ? __GARLIC_CLAW_DEV_LOGIN_SECRET__
+  : ''
+const isDev = !!devSecret
 
 async function doLogin(input: string) {
   error.value = ''

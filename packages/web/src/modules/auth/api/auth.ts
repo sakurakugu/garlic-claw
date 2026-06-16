@@ -10,7 +10,14 @@ function ensureRequiredText(value: string | null | undefined, field: 'secret') {
 }
 
 export function login(secret: string) {
-  return post<{ accessToken: string }>('/auth/login', {
-    secret: ensureRequiredText(secret, 'secret'),
-  })
+  return post<{ accessToken: string }>(
+    '/auth/login',
+    {
+      secret: ensureRequiredText(secret, 'secret'),
+    },
+    {
+      skipAuth: true,
+      skipUnauthorizedRedirect: true,
+    },
+  )
 }
